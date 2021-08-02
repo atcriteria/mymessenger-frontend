@@ -2,7 +2,7 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import UsernameForm from './components/UsernameForm';
 import UserWindow from './components/UserWindow';
-import socket from './util/socket';
+import {socket, Socket } from './util/socket';
 
 const initialValues = {
   username: window.localStorage.getItem("username") || ""
@@ -16,7 +16,7 @@ function App() {
       console.log(state.username)
       let username = state.username
       socket.auth = { username };
-      socket.connect();
+      socket.disconnect();
     } else {
       return
     }
@@ -24,6 +24,8 @@ function App() {
 
   const submitUsername = username => {
     window.localStorage.setItem("username", username)
+    // socket.emit("send-message", `${username} was just created`)
+    Socket.sendMessage(`${username} was just created`)
     return setState({
       ...state,
       username
@@ -38,13 +40,8 @@ function App() {
         })
         console.log(state)
     }
-})
-socket.on("connect", () => {
-  console.log("connected successfully")
-})
-socket.on("disconnect", () => {
-  console.log("disconnected successfully")
-})
+  })
+  
 
   return (
     <div className="App">

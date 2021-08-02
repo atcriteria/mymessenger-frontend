@@ -4,4 +4,25 @@ import {io} from 'socket.io-client';
 const URL = 'http://localhost:3333';
 const socket = io(URL, { autoConnect: false});
 
-export default socket;
+socket.on("connect", () => {
+    const username = socket.auth.username;
+    console.log(`Connected as ${username}`)
+})
+socket.on("disconnect", () => {
+    console.log("disconnected successfully")
+})
+
+class SocketImpl {
+    constructor(){
+        this.sendMessage = (message) => {
+            socket.emit("send-message", message)
+        }
+    }
+}
+
+const Socket = new SocketImpl()
+
+export {
+    Socket,
+    socket
+}
