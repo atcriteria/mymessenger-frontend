@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from 'react'
 import UsernameForm from './components/UsernameForm';
+import UserWindow from './components/UserWindow';
 
 const initialValues = {
   username: window.localStorage.getItem("username") || ""
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       Main App<br />
       {
-        (state.username) ? `Welcome back ${state.username}` : <UsernameForm submitUsername={submitUsername} />
+        (state.username) ? <UserWindow props={state} /> : <UsernameForm submitUsername={submitUsername} />
       }
     </div>
   );
