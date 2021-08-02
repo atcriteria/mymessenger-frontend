@@ -3,6 +3,10 @@
   text-align: center;
   width: 50%;
 }
+
+/* 
+  ChatBox component styles
+*/
 .chat-box-wrapper{
   background-color: rgb(11, 141, 255);
   padding: 0 1.5%;
@@ -29,4 +33,37 @@
 }
 .message-wrapper:nth-child(odd){
   background-color: rgb(104, 197, 255);
+}
+
+
+/* 
+  TextField component styles
+*/
+.text-field-wrapper{
+  width: 100%;
+  margin: 2% 0;
+}
+.text-field-form-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-field-input{
+  width: 87%;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 0px 6px;
+}
+.send-button{
+  width: 10%;
+  height: 34px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: lightgray;
+}
+.send-button:hover{
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
 }

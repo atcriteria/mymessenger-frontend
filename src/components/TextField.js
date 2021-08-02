@@ -15,11 +15,10 @@ export default function TextField(){
     }
 
     return(
-        <div>
-            This is where you will input all of your text
-            <form>
-                <input type="text" name="text" value={state.text} onChange={handleChange} placeholder="Enter your message here..." required maxLength="160" size="100" />
-                <button type="submit" >Send</button>
+        <div className="text-field-wrapper">
+            <form className="text-field-form-wrapper">
+                <input className="text-field-input" type="text" name="text" value={state.text} onChange={handleChange} placeholder="Enter your message here..." required maxLength="160" />
+                <button className="send-button" type="submit" >Send</button>
             </form>
         </div>
     )
