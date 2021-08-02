@@ -45,7 +45,6 @@ function App() {
 
   return (
     <div className="App">
-      Main App<br />
       {
         (state.username) ? <UserWindow props={state} /> : <UsernameForm submitUsername={submitUsername} />
       }

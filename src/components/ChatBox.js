@@ -23,6 +23,12 @@ export default function ChatBox(){
                 <Message />
                 <Message />
                 <Message />
+                <Message />
+                <Message />
+                <Message />
+                <Message />
+                <Message />
+                <Message />
                 <Message message="This is a custom message that I am setting for just this one to ensure it is the bottom message"/>
             </div>
         </div>

@@ -2,6 +2,15 @@
   margin: auto;
   text-align: center;
   width: 50%;
+  min-width: 400px;
+}
+
+/* 
+  Misc Styles
+*/
+.username-span{
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 /* 
@@ -10,7 +19,7 @@
 .chat-box-wrapper{
   background-color: rgb(11, 141, 255);
   padding: 0 1.5%;
-  max-height: 50vh;
+  max-height: 86vh;
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
@@ -18,7 +27,7 @@
 }
 .message-wrapper{
   text-align: left;
-  padding: 1.5%;
+  padding: 2%;
   background-color: rgb(174, 235, 255);
   border-radius: 16px;
   margin: 1.5% 0;
@@ -52,16 +61,17 @@
 .text-field-input{
   width: 87%;
   height: 30px;
-  font-size: 20px;
+  font-size: 14px;
   border-radius: 12px;
   padding: 0px 6px;
+  margin-right: 4px;
 }
 .send-button{
   width: 10%;
-  height: 34px;
-  border: 2px solid black;
+  height: 35px;
   border-radius: 12px;
   background-color: lightgray;
+  min-width: 48px;
 }
 .send-button:hover{
   background-color: rgb(241, 241, 241);
