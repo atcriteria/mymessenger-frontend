@@ -3,6 +3,7 @@
   text-align: center;
   width: 50%;
   min-width: 400px;
+  max-height: 100vh;
 }
 
 /* 
@@ -19,7 +20,7 @@
 .chat-box-wrapper{
   background-color: rgb(11, 141, 255);
   padding: 0 1.5%;
-  max-height: 86vh;
+  max-height: 84vh;
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
