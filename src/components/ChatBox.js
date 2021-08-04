@@ -21,8 +21,6 @@ let initialValues = [];
 export default function ChatBox({username}){
     // let initialValues = [{username, message: `welcome back ${username}`}];
     const [chats, setChats] = useState([])
-    const [message, setMessage] = useState('')
-    const socketClientRef = useRef()
     console.log("component mounted")
 
     useEffect(() => {
@@ -31,7 +29,15 @@ export default function ChatBox({username}){
         })
     }, [])
     
-
+    if(chats.length > 1){
+        let prevChat = chats[chats.length-2]
+        let currentChat = chats[chats.length-1]
+        if(prevChat.username === currentChat.username){
+            chats[chats.length-2].message.push(chats[chats.length-1].message[0])
+            chats.pop();
+        }
+    }
+    
     return(
         <div className="chat-box-wrapper">
             <div className="chat-box-inner-wrapper">

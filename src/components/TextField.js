@@ -17,7 +17,7 @@ export default function TextField({username}){
 
     const handleSubmit = e => {
         e.preventDefault();
-        const message = {username, message: state.text}
+        const message = {username, message: [state.text]}
         if (message === ""){
             return
         }
