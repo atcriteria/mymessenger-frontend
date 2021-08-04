@@ -1,4 +1,6 @@
 import Message from "./Message"
+import { socket } from '../util/socket';
+import {useState, useEffect} from 'react';
 /*
     The chat box has two primary classNames
     1) chat-box-wrapper
@@ -14,22 +16,29 @@ import Message from "./Message"
     both start at the top and the messages
     would be in reverse order.
 */
+let initialValues = []
+
 export default function ChatBox(){
+    const [messages, setMessages] = useState(initialValues)
+
+    socket.on("receive-message", message => {
+        return setMessages([
+            ...messages, message
+        ])
+    })
+    useState(() => {
+        console.log("something happened..")
+    }, messages)
+    
+    console.log(messages)
     return(
         <div className="chat-box-wrapper">
             <div className="chat-box-inner-wrapper">
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message message="This is a custom message that I am setting for just this one to ensure it is the bottom message"/>
+                {
+                    messages.map((messageObject) => {
+                        return <Message messageObject={messageObject} key={Math.random()} />
+                    })
+                }
             </div>
         </div>
     )
