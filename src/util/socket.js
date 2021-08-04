@@ -23,6 +23,5 @@ class SocketImpl {
 const Socket = new SocketImpl()
 
 export {
-    Socket,
     socket
 }
