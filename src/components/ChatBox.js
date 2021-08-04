@@ -16,21 +16,43 @@ import {useState, useEffect} from 'react';
     both start at the top and the messages
     would be in reverse order.
 */
-let initialValues = []
+// let initialValues = [];
 
-export default function ChatBox(){
+export default function ChatBox({username}){
+    let initialValues = [{username, message: [`welcome back ${username}`]}];
     const [messages, setMessages] = useState(initialValues)
+    console.log("ChatBox component render")
+    if(messages.length === 0){
+        console.log("zero")
+    } else {
+        console.log(messages.length)
+    }
 
     socket.on("receive-message", message => {
-        return setMessages([
-            ...messages, message
-        ])
+        let length = messages.length - 1;
+        console.log(messages)
+        if (length <= -1){
+            console.log("less than 0")
+            return setMessages([
+                ...messages, message
+            ])
+        } else {
+            let lastUser = messages[length].username || username
+            if (lastUser && lastUser === message.username){
+                console.log("appending path")
+                let curMessages = messages[length].message
+                curMessages.push(message.message[0])
+                let stateCopy = [...messages]
+                stateCopy[length].message = curMessages
+                return setMessages(stateCopy)
+            }
+            console.log("normal path")
+            return setMessages([
+                ...messages, message
+            ])
+        }
     })
-    useState(() => {
-        console.log("something happened..")
-    }, messages)
-    
-    console.log(messages)
+
     return(
         <div className="chat-box-wrapper">
             <div className="chat-box-inner-wrapper">

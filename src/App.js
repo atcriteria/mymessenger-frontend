@@ -24,7 +24,7 @@ function App() {
 
   const submitUsername = username => {
     window.localStorage.setItem("username", username)
-    socket.emit("send-message", `${username} was just created`)
+    // socket.emit("send-message", `${username} was just created`)
     // Socket.sendMessage(`${username} was just created`)
     return setState({
       ...state,
