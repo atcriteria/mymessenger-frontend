@@ -5,7 +5,7 @@ const initialValues = {
     text: ""
 }
 
-export default function TextField(){
+export default function TextField({username}){
     const [state, setState] = useState(initialValues)
 
     const handleChange = e => {
@@ -17,12 +17,10 @@ export default function TextField(){
 
     const handleSubmit = e => {
         e.preventDefault();
-        const message = state.text
+        const message = {username, message: state.text}
         if (message === ""){
             return
         }
-        console.log(`Sending message with: ${message}`)
-        console.log(socket)
         socket.emit("send-message", message)
     }
     return(
