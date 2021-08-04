@@ -6,7 +6,7 @@ export default function UserWindow({props}){
         <div className="user-window-wrapper">
             <h2>You are registered as <span className="username-span">{props.username}</span></h2>
             <ChatBox />
-            <TextField />
+            <TextField username={props.username} />
         </div>
     )
 }
