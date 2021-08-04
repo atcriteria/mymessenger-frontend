@@ -18,7 +18,7 @@
   ChatBox component styles
 */
 .chat-box-wrapper{
-  background: linear-gradient(180deg, rgb(220, 168, 255), rgb(248, 44, 255));
+  background: linear-gradient(180deg, rgb(53, 53, 53), rgb(167, 167, 167));
   padding: 0 1.5%;
   max-height: 84vh;
   overflow: auto;
@@ -29,10 +29,10 @@
 .message-wrapper{
   text-align: left;
   padding: 2%;
-  background: linear-gradient(180deg, rgb(233, 255, 250), rgb(109, 255, 218));
+  /* background: linear-gradient(180deg, rgb(233, 255, 250), rgb(109, 255, 218)); */
   border-radius: 16px;
   margin: 1.5% 0;
-  box-shadow: 0px 4px 4px rgb(135, 0, 153);
+  box-shadow: 0px 4px 4px rgb(52, 46, 53);
 }
 .message-wrapper h3{
   font-size: .75rem;
@@ -43,7 +43,7 @@
   text-indent: 22px;
 }
 .message-wrapper:nth-child(odd){
-  background: linear-gradient(180deg, rgb(233, 238, 255), rgb(109, 177, 255))
+  /* background: linear-gradient(180deg, rgb(233, 238, 255), rgb(109, 177, 255)) */
 }
 
 

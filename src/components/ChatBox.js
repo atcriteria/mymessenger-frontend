@@ -41,7 +41,7 @@ export default function ChatBox({username, colorScheme}){
             <div className="chat-box-inner-wrapper">
                 {
                     chats.map((messageObject) => {
-                        return <Message messageObject={messageObject} key={Math.random()} />
+                        return <Message messageObject={messageObject} username={username} key={Math.random()} />
                     })
                 }
             </div>

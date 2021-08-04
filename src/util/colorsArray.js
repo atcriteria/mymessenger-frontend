@@ -23,7 +23,7 @@ const colors = [
     {first: "#a87ab5", second: "#9b822d", text: "#614b00"},
     {first: "#ff6785", second: "#cb2747", text: "#630c1d"},
     {first: "#019051", second: "#6df7ba", text: "#cffde9"},
-    {first: "#4a0200", second: "#e9130d", text: "#2c1818"},
+    {first: "#4a0200", second: "#e9130d", text: "200000"},
     {first: "#e9130d", second: "#4a0200", text: "#2c1818"},
     {first: "#00062e", second: "#163b88", text: "#4c91d3"},
     {first: "#ffffff", second: "#bfddff", text: "#4f92f9"},
