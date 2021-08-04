@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import colors from '../util/colorsArray';
 
 const initialValues = {
-    username: ""
+    username: "",
+    colors: {}
 }
 
 export default function UsernameForm({submitUsername}){
@@ -16,7 +18,9 @@ export default function UsernameForm({submitUsername}){
 
     const handleSubmit = e => {
         e.preventDefault();
-        submitUsername(values.username)
+        let lengthColors = colors.length-1
+        let randomColor = colors[Math.ceil((Math.random()*lengthColors))]
+        submitUsername(values, randomColor)
     }
 
     return(

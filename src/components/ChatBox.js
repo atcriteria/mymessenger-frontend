@@ -1,6 +1,6 @@
 import Message from "./Message"
 import { socket } from '../util/socket';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 /*
     The chat box has two primary classNames
     1) chat-box-wrapper
@@ -16,12 +16,10 @@ import {useState, useEffect, useRef} from 'react';
     both start at the top and the messages
     would be in reverse order.
 */
-let initialValues = [];
 
-export default function ChatBox({username}){
+export default function ChatBox({username, colorScheme}){
     // let initialValues = [{username, message: `welcome back ${username}`}];
     const [chats, setChats] = useState([])
-    console.log("component mounted")
 
     useEffect(() => {
         socket.on("receive-message", message => {

@@ -5,22 +5,21 @@ const URL = 'http://localhost:3333';
 const socket = io(URL, { autoConnect: false});
 
 socket.on("connect", () => {
-    const username = socket.auth.username;
-    console.log(`Connected as ${username}`)
+    // const username = socket.auth.username;
 })
 socket.on("disconnect", () => {
     console.log("disconnected successfully")
 })
 
-class SocketImpl {
-    constructor(){
-        this.sendMessage = (message) => {
-            socket.emit("send-message", message)
-        }
-    }
-}
+// class SocketImpl {
+//     constructor(){
+//         this.sendMessage = (message) => {
+//             socket.emit("send-message", message)
+//         }
+//     }
+// }
 
-const Socket = new SocketImpl()
+// const Socket = new SocketImpl()
 
 export {
     socket

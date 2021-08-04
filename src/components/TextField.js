@@ -5,7 +5,7 @@ const initialValues = {
     text: ""
 }
 
-export default function TextField({username}){
+export default function TextField({username, colorScheme}){
     const [state, setState] = useState(initialValues)
 
     const handleChange = e => {
@@ -17,7 +17,7 @@ export default function TextField({username}){
 
     const handleSubmit = e => {
         e.preventDefault();
-        const message = {username, message: [state.text]}
+        const message = {username: username, message: [state.text], colorScheme: colorScheme}
         if (message === ""){
             return
         }

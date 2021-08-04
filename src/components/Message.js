@@ -1,8 +1,9 @@
 // A message component to house displayed messages
 // from the ChatBox.js component
 
+import styled from 'styled-components';
+
 export default function Message({messageObject}){
-    let username = messageObject.username
     let messages = messageObject.message
     return(
         <div className="message-wrapper">

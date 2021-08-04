@@ -2,10 +2,11 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import UsernameForm from './components/UsernameForm';
 import UserWindow from './components/UserWindow';
-import {socket, Socket } from './util/socket';
+import {socket} from './util/socket';
 
 const initialValues = {
-  username: window.localStorage.getItem("username") || ""
+  username: window.localStorage.getItem("username") || "",
+  colorScheme: JSON.parse(window.localStorage.getItem("colorScheme")) || { first: "white", second: "white", text: "black"}
 }
 
 function App() {
@@ -13,7 +14,6 @@ function App() {
 
   useEffect(() => {
     if (state.username !== ""){
-      console.log(state.username)
       let username = state.username
       socket.auth = { username };
       socket.connect();
@@ -22,13 +22,14 @@ function App() {
     }
   }, [state])
 
-  const submitUsername = username => {
+  const submitUsername = (values, randomColor) => {
+    const username = values.username
     window.localStorage.setItem("username", username)
-    // socket.emit("send-message", `${username} was just created`)
-    // Socket.sendMessage(`${username} was just created`)
+    window.localStorage.setItem("colorScheme", JSON.stringify(randomColor))
     return setState({
       ...state,
-      username
+      username: username,
+      colorScheme: randomColor
     })
   }
   socket.on("connect_error", (err) => {
@@ -46,7 +47,7 @@ function App() {
   return (
     <div className="App">
       {
-        (state.username) ? <UserWindow props={state} /> : <UsernameForm submitUsername={submitUsername} />
+        (state.username) ? <UserWindow username={state.username} colorScheme={state.colorScheme} /> : <UsernameForm submitUsername={submitUsername} />
       }
     </div>
   );
