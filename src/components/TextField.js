@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { socket } from '../util/socket';
 
 const initialValues = {
     text: ""
@@ -14,9 +15,19 @@ export default function TextField(){
         })
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        const message = state.text
+        if (message === ""){
+            return
+        }
+        console.log(`Sending message with: ${message}`)
+        console.log(socket)
+        socket.emit("send-message", message)
+    }
     return(
         <div className="text-field-wrapper">
-            <form className="text-field-form-wrapper">
+            <form className="text-field-form-wrapper" onSubmit={handleSubmit} >
                 <input className="text-field-input" type="text" name="text" value={state.text} onChange={handleChange} placeholder="Enter your message here..." required maxLength="160" />
                 <button className="send-button" type="submit" >Send</button>
             </form>
