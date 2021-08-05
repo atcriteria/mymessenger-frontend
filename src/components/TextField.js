@@ -3,7 +3,8 @@ import { socket } from '../util/socket';
 import numericalMonthToText from '../util/numericalMonthToText';
 
 const initialValues = {
-    text: ""
+    text: "",
+    lastMessage: null
 }
 
 export default function TextField({username, colorScheme}){
@@ -18,14 +19,23 @@ export default function TextField({username, colorScheme}){
 
     const handleSubmit = e => {
         e.preventDefault();
-        let date = new Date();
-        let processedDate = `${date.getDate()} ${numericalMonthToText(date.getMonth())} ${date.getFullYear()} @${date.getHours()}:${date.getMinutes()}`
-        const message = {username: username, message: [{text: state.text, timestamp: processedDate}], colorScheme: colorScheme}
-        if (message === ""){
-            return
+        let currentTime = Date.now();
+        let lastMessage = (state.lastMessage) ? currentTime - state.lastMessage : null
+        if(!lastMessage || lastMessage >= 2000){
+            let date = new Date();
+            let processedDate = `${date.getDate()} ${numericalMonthToText(date.getMonth())} ${date.getFullYear()} @${date.getHours()}:${date.getMinutes()}`
+            const message = {username: username, message: [{text: state.text, timestamp: processedDate}], colorScheme: colorScheme}
+            if (message === ""){
+                return
+            }
+            socket.emit("send-message", message)
+            setState({
+                text: "",
+                lastMessage: Date.now()
+            })
+        } else {
+            alert("You are trying to send messages too quickly")
         }
-        socket.emit("send-message", message)
-        setState(initialValues)
     }
     return(
         <div className="text-field-wrapper">
