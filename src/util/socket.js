@@ -17,16 +17,6 @@ socket.on("disconnect", () => {
     console.log(username)
 })
 
-// class SocketImpl {
-//     constructor(){
-//         this.sendMessage = (message) => {
-//             socket.emit("send-message", message)
-//         }
-//     }
-// }
-
-// const Socket = new SocketImpl()
-
 export {
     socket
 }
