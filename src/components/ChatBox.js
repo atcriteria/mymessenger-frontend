@@ -21,7 +21,6 @@ import AdminMessage from "./AdminMessage";
 export default function ChatBox({username, colorScheme, filterLanguage}){
     // let initialValues = [{username, message: `welcome back ${username}`}];
     const [chats, setChats] = useState([])
-    console.log("component mount")
 
     useEffect(() => {
         socket.on("receive-message", message => {
