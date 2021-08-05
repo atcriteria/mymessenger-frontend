@@ -24,7 +24,7 @@ export default function ChatBox({username, colorScheme, filterLanguage}){
 
     useEffect(() => {
         socket.on("receive-message", message => {
-            if(message.length >1){
+            if(message.length >= 1){
                 setChats(message)
             } else {
                 setChats(prevChats => [...prevChats, message])
