@@ -6,7 +6,8 @@ import {socket} from './util/socket';
 
 const initialValues = {
   username: window.localStorage.getItem("username") || "",
-  colorScheme: JSON.parse(window.localStorage.getItem("colorScheme")) || { first: "white", second: "white", text: "black"}
+  colorScheme: JSON.parse(window.localStorage.getItem("colorScheme")) || { first: "white", second: "white", text: "black"},
+  filterLanguage: true
 }
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
   return (
     <div className="App">
       {
-        (state.username) ? <UserWindow username={state.username} colorScheme={state.colorScheme} /> : <UsernameForm submitUsername={submitUsername} />
+        (state.username) ? <UserWindow username={state.username} colorScheme={state.colorScheme} filterLanguage={state.filterLanguage} /> : <UsernameForm submitUsername={submitUsername} />
       }
     </div>
   );

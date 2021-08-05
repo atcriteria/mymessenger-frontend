@@ -40,7 +40,7 @@
 }
 .message-wrapper p {
   margin: 2.5px 0;
-  text-indent: 22px;
+  /* text-indent: 22px; */
 }
 .message-wrapper:nth-child(odd){
   /* background: linear-gradient(180deg, rgb(233, 238, 255), rgb(109, 177, 255)) */

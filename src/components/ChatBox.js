@@ -17,7 +17,7 @@ import {useState, useEffect} from 'react';
     would be in reverse order.
 */
 
-export default function ChatBox({username, colorScheme}){
+export default function ChatBox({username, colorScheme, filterLanguage}){
     // let initialValues = [{username, message: `welcome back ${username}`}];
     const [chats, setChats] = useState([])
 
@@ -41,7 +41,7 @@ export default function ChatBox({username, colorScheme}){
             <div className="chat-box-inner-wrapper">
                 {
                     chats.map((messageObject) => {
-                        return <Message messageObject={messageObject} username={username} key={Math.random()} />
+                        return <Message messageObject={messageObject} username={username} filterLanguage={filterLanguage} key={Math.random()} />
                     })
                 }
             </div>
