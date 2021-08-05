@@ -17,7 +17,7 @@ export default function Message({messageObject, username, filterLanguage}){
             <h3>{(username === messageObject.username) ? `${username} (You)`: messageObject.username }</h3>
             {
                 messages.map(message => {
-                    return <p key={Math.random()} >{(filterLanguage) ? filter.clean(message) : message}</p>
+                    return <p title={`sent: ${message.timestamp}`} key={Math.random()} >{(filterLanguage) ? filter.clean(message.text) : message.text}</p>
                 })
             }
         </div>

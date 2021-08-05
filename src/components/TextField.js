@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { socket } from '../util/socket';
+import numericalMonthToText from '../util/numericalMonthToText';
 
 const initialValues = {
     text: ""
@@ -17,7 +18,9 @@ export default function TextField({username, colorScheme}){
 
     const handleSubmit = e => {
         e.preventDefault();
-        const message = {username: username, message: [state.text], colorScheme: colorScheme}
+        let date = new Date();
+        let processedDate = `${date.getDate()} ${numericalMonthToText(date.getMonth())} ${date.getFullYear()} @${date.getHours()}:${date.getMinutes()}`
+        const message = {username: username, message: [{text: state.text, timestamp: processedDate}], colorScheme: colorScheme}
         if (message === ""){
             return
         }
