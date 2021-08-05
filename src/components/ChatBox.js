@@ -1,6 +1,7 @@
 import Message from "./Message"
 import { socket } from '../util/socket';
 import {useState, useEffect} from 'react';
+import AdminMessage from "./AdminMessage";
 /*
     The chat box has two primary classNames
     1) chat-box-wrapper
@@ -20,14 +21,19 @@ import {useState, useEffect} from 'react';
 export default function ChatBox({username, colorScheme, filterLanguage}){
     // let initialValues = [{username, message: `welcome back ${username}`}];
     const [chats, setChats] = useState([])
+    console.log("component mount")
 
     useEffect(() => {
         socket.on("receive-message", message => {
             setChats(prevChats => [...prevChats, message])
         })
     }, [])
-    
-    if(chats.length > 1){
+    useEffect(() => {
+        socket.on("admin-message", message => {
+            setChats(prevChats => [...prevChats, message])
+        })
+    }, [])
+    if(chats.length > 1 && !chats[chats.length -1].adminMessage){
         let prevChat = chats[chats.length-2]
         let currentChat = chats[chats.length-1]
         if(prevChat.username === currentChat.username){
@@ -38,10 +44,14 @@ export default function ChatBox({username, colorScheme, filterLanguage}){
     
     return(
         <div className="chat-box-wrapper">
-            <div className="chat-box-inner-wrapper">
+            <div className="chat-box-inner-wrapper" id="chatBox">
                 {
                     chats.map((messageObject) => {
-                        return <Message messageObject={messageObject} username={username} filterLanguage={filterLanguage} key={Math.random()} />
+                        if(messageObject.adminMessage){
+                            return <AdminMessage key={Math.random()} username={"<SYSTEM>"} messageObject={messageObject} />
+                        } else {
+                            return <Message messageObject={messageObject} username={username} filterLanguage={filterLanguage} key={Math.random()} />
+                        }
                     })
                 }
             </div>

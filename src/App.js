@@ -2,7 +2,6 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import UsernameForm from './components/UsernameForm';
 import UserWindow from './components/UserWindow';
-import AdminMessage from './components/AdminMessage';
 import {socket} from './util/socket';
 
 const initialValues = {
@@ -34,6 +33,7 @@ function App() {
       colorScheme: randomColor
     })
   }
+
   socket.on("connect_error", (err) => {
     if(err.message === "invalid username"){
       console.log("invalid username")
@@ -43,6 +43,9 @@ function App() {
         })
         console.log(state)
     }
+  })
+  window.addEventListener("beforeunload", () => {
+    socket.disconnect()
   })
   
 

@@ -1,7 +1,7 @@
-export default function AdminMessage(){
+export default function AdminMessage({username, messageObject}){
     return(
-        <div>
-            This is a message from the admin/server
+        <div className="message-wrapper admin-message">
+            {username} <span className="admin-message-message">{messageObject.message}</span>
         </div>
     )
 }

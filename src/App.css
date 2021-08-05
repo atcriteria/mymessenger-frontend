@@ -79,3 +79,19 @@
   background-color: rgb(241, 241, 241);
   cursor: pointer;
 }
+
+/* 
+  Admin-Message styles
+*/
+.admin-message{
+  background: linear-gradient(180deg, rgb(247, 247, 247), rgb(167, 167, 167));
+  color: black;
+  font-weight: 500;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.admin-message-message{
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
