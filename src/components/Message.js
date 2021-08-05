@@ -1,10 +1,11 @@
 // A message component to house displayed messages
 // from the ChatBox.js component
 import Filter from 'bad-words';
-import badWords from '../util/badWords';
+import {badWords, goodWords} from '../util/censoredWords';
 
 let filter = new Filter();
 filter.addWords(...badWords)
+filter.removeWords(...goodWords)
 
 export default function Message({messageObject, username, filterLanguage}){
     let messages = messageObject.message;
