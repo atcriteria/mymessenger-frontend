@@ -2,6 +2,7 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import UsernameForm from './components/UsernameForm';
 import UserWindow from './components/UserWindow';
+import AdminMessage from './components/AdminMessage';
 import {socket} from './util/socket';
 
 const initialValues = {
