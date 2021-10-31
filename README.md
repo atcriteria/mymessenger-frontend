@@ -1,4 +1,4 @@
-# mymessenger-frontend
+# MyMessenger - Front End
 The front end for the MyMessenger Application
 
 ## About the App
@@ -13,3 +13,7 @@ This is a small scale instant messaging application that allows users to connect
 The most noteworthy dependencies that we have are:
 - Socket.io-client (used to establish the web sockets to the backend)
 - bad-words (used to implement a profanity filter)
+
+## Goals
+
+There are no future goals planned for this application.
